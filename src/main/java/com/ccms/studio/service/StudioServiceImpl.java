@@ -15,6 +15,7 @@ import javax.validation.Validator;
 import java.util.List;
 import java.util.Set;
 
+@Service
 public class StudioServiceImpl implements StudioService {
     private static final String ENTITY = "Studios";
     private final StudioRepository studioRepository;
