@@ -1,6 +1,8 @@
 package com.ccms.studio.api;
 
 
+import com.ccms.studio.domain.service.StudioService;
+import com.ccms.studio.mapping.StudioMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,4 +18,6 @@ public class StudiosController {
         this.studioService = studioService;
         this.mapper = mapper;
     }
+
+    //add http methods
 }
