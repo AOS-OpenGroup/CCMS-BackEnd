@@ -1,4 +1,5 @@
-package com.ccms.studio.domain.model.entity;
+package com.ccms.musician.domain.model.entity;
+
 import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -11,8 +12,8 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "studios")
-public class Studio {
+@Table(name = "musicians")
+public class Musician {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,15 +23,11 @@ public class Studio {
     @Size(max = 60)
     private String name;
 
-    private String address;
-
     @NotNull
     @NotBlank
     @Column(unique = true)
     private String email;
 
-    @Size(max = 200)
-    private String description;
+    private long phoneNumber;
 
-    //consider joining with equipment
 }

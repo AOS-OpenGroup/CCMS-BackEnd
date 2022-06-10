@@ -17,7 +17,7 @@ import java.util.Set;
 
 @Service
 public class StudioServiceImpl implements StudioService {
-    private static final String ENTITY = "Studios";
+    private static final String ENTITY = "Studio";
     private final StudioRepository studioRepository;
 
     private final Validator validator;
