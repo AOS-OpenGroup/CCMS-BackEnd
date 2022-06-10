@@ -1,6 +1,4 @@
 package com.ccms.studio.api;
-
-
 import com.ccms.studio.domain.service.StudioService;
 import com.ccms.studio.mapping.StudioMapper;
 import com.ccms.studio.resource.CreateStudioResource;
