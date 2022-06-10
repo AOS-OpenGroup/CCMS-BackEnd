@@ -29,6 +29,7 @@ public class Studio {
     @Column(unique = true)
     private String email;
 
+    @Size(max = 200)
     private String description;
 
     //consider joining with equipment
