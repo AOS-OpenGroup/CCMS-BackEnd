@@ -1,7 +1,7 @@
-package com.ccms.musician.service;
-import com.ccms.musician.domain.model.entity.Musician;
-import com.ccms.musician.domain.persistence.MusicianRepository;
-import com.ccms.musician.domain.service.MusicianService;
+package com.ccms.user.service;
+import com.ccms.user.domain.model.entity.Musician;
+import com.ccms.user.domain.persistence.MusicianRepository;
+import com.ccms.user.domain.service.MusicianService;
 import com.ccms.shared.exception.ResourceNotFoundException;
 import com.ccms.shared.exception.ResourceValidationException;
 import org.springframework.data.domain.Page;

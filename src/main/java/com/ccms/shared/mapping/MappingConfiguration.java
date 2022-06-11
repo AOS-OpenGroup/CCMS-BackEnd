@@ -1,6 +1,6 @@
 package com.ccms.shared.mapping;
 
-import com.ccms.musician.mapping.MusicianMapper;
+import com.ccms.user.mapping.MusicianMapper;
 import com.ccms.studio.mapping.StudioMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

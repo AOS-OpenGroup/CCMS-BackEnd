@@ -1,7 +1,6 @@
-package com.ccms.musician.domain.service;
+package com.ccms.user.domain.service;
 
-import com.ccms.musician.domain.model.entity.Musician;
-import com.ccms.studio.domain.model.entity.Studio;
+import com.ccms.user.domain.model.entity.Musician;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;

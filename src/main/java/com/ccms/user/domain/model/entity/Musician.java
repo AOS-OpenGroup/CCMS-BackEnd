@@ -1,11 +1,22 @@
-package com.ccms.musician.resource;
+package com.ccms.user.domain.model.entity;
 
-import javax.persistence.Column;
+import lombok.*;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class CreateMusicianResource {
+@Getter
+@Setter
+@With
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "musicians")
+public class Musician {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotNull
     @NotBlank
@@ -18,5 +29,5 @@ public class CreateMusicianResource {
     private String email;
 
     private long phoneNumber;
-}
 
+}

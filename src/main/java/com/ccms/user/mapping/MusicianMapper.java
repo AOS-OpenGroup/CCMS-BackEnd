@@ -1,9 +1,9 @@
-package com.ccms.musician.mapping;
+package com.ccms.user.mapping;
 
-import com.ccms.musician.domain.model.entity.Musician;
-import com.ccms.musician.resource.CreateMusicianResource;
-import com.ccms.musician.resource.MusicianResource;
-import com.ccms.musician.resource.UpdateMusicianResource;
+import com.ccms.user.domain.model.entity.Musician;
+import com.ccms.user.resource.CreateMusicianResource;
+import com.ccms.user.resource.MusicianResource;
+import com.ccms.user.resource.UpdateMusicianResource;
 import com.ccms.shared.mapping.EnhancedModelMapper;
 import com.ccms.studio.domain.model.entity.Studio;
 import org.springframework.beans.factory.annotation.Autowired;

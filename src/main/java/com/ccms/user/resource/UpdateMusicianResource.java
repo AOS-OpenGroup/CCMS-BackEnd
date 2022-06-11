@@ -1,4 +1,4 @@
-package com.ccms.musician.resource;
+package com.ccms.user.resource;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
