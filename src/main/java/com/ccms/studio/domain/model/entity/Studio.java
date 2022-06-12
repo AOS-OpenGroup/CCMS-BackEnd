@@ -1,4 +1,5 @@
 package com.ccms.studio.domain.model.entity;
+import com.ccms.shared.domain.model.AuditModel;
 import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +13,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @Entity
 @Table(name = "studios")
-public class Studio {
+public class Studio extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
