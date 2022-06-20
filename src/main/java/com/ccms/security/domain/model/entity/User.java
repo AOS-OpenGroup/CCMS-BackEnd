@@ -37,6 +37,7 @@ public class User extends AuditModel {
     @Size(max = 120)
     private String password;
 
+    //update relationships with roles
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
