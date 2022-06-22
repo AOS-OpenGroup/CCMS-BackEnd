@@ -1,7 +1,8 @@
-package com.ccms.studio.resource;
+package com.ccms.user.resource;
 
 import lombok.*;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -11,15 +12,18 @@ import javax.validation.constraints.Size;
 @With
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateStudioResource {
+public class CreateMusicianResource {
+
     @NotNull
     @NotBlank
     @Size(max = 60)
     private String name;
-    private String address;
+
     @NotNull
     @NotBlank
+    @Column(unique = true)
     private String email;
-    @Size(max = 200)
-    private String description;
+
+    private long phoneNumber;
 }
+

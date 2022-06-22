@@ -1,4 +1,5 @@
-package com.ccms.studio.domain.model.entity;
+package com.ccms.user.domain.model.entity;
+
 import com.ccms.shared.domain.model.AuditModel;
 import lombok.*;
 import javax.persistence.*;
@@ -12,8 +13,8 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "studios")
-public class Studio extends AuditModel {
+@Table(name = "musicians")
+public class Musician extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,15 +24,11 @@ public class Studio extends AuditModel {
     @Size(max = 60)
     private String name;
 
-    private String address;
-
     @NotNull
     @NotBlank
     @Column(unique = true)
     private String email;
 
-    @Size(max = 200)
-    private String description;
+    private long phoneNumber;
 
-    //consider joining with equipment
 }
