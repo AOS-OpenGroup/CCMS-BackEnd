@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 public class UpdateUserResource {
-    private Long id;
+
     @NotNull
     @NotBlank
     @Size(max = 60)
@@ -20,6 +20,6 @@ public class UpdateUserResource {
     @NotBlank
     private String email;
 
-    @Size(max = 200)
+
     private Long phoneNumber;
 }
