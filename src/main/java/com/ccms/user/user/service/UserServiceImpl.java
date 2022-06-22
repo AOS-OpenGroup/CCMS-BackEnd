@@ -1,6 +1,7 @@
 package com.ccms.user.user.service;
 import com.ccms.shared.exception.ResourceNotFoundException;
 import com.ccms.shared.exception.ResourceValidationException;
+import com.ccms.studio.domain.model.entity.Studio;
 import com.ccms.user.user.domain.model.entity.User;
 import com.ccms.user.user.domain.persistence.UserRepository;
 import com.ccms.user.user.domain.service.UserService;
@@ -57,7 +58,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User update(Long userId, User request) {
-        return null;
+        Set<ConstraintViolation<User>> violations = validator.validate(request);
+
+        if (!violations.isEmpty())
+            throw new ResourceValidationException(ENTITY, violations);
+
+        return userRepository.findById(userId).map(user ->
+                        userRepository.save(user.withName(request.getName())
+                                .withName(request.getName())
+                                .withEmail(request.getEmail())
+                                .withPhoneNumber(request.getPhoneNumber())))
+                .orElseThrow(() -> new ResourceNotFoundException(ENTITY, userId));
+
     }
 
     @Override
