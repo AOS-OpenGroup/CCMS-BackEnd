@@ -21,7 +21,7 @@ public class JwtHandler {
     @Value("${authorization.jwt.expiration.days}")
     private int expirationDays;
 
-    private String generateToken(Authentication authentication){
+    public String generateToken(Authentication authentication){
         String subject=((UserDetailsImpl) authentication.getPrincipal()).getUsername();
         Date issuedAt=new Date();
         Date expiration= DateUtils.addDays(issuedAt, expirationDays);
