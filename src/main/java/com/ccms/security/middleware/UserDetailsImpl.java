@@ -29,11 +29,6 @@ public class UserDetailsImpl implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities(){
-        return null;
-    }
-
-    @Override
     public boolean isAccountNonExpired(){
         return true;
     }

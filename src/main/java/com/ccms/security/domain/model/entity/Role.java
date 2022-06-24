@@ -3,7 +3,6 @@ package com.ccms.security.domain.model.entity;
 import com.ccms.security.domain.model.enumeration.Roles;
 import com.ccms.shared.domain.model.AuditModel;
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 

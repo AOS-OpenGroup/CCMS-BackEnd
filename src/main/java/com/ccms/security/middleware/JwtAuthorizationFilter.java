@@ -33,9 +33,8 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
         String authorizationParameter = request.getHeader("Authorization");
 
         if(StringUtils.hasText(authorizationParameter) && authorizationParameter.startsWith("Bearer")){
-            String token=new LinkedList<>(
+            return new LinkedList<>(
                     Arrays.asList(authorizationParameter.split(" "))).getLast();
-            return token;
         }
 
         return null;

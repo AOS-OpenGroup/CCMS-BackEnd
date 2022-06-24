@@ -1,13 +1,11 @@
 package com.ccms.security.resource;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.With;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @With
 public class RoleResource {
     private Long id;

@@ -29,7 +29,7 @@ public class JwtHandler {
                 .setSubject(subject)
                 .setIssuedAt(issuedAt)
                 .setExpiration(expiration)
-                .signWith(SignatureAlgorithm.ES256, secret)
+                .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();
     }
 

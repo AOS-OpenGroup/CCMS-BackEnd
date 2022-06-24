@@ -13,6 +13,7 @@ public class AuthenticateRequest {
     @NotNull
     @NotBlank
     private String username;
+
     @NotNull
     @NotBlank
     private String password;
