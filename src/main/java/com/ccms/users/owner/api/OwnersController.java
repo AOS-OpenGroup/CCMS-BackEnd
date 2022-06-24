@@ -9,15 +9,19 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Tag(name = "Owners")
+
+@SecurityRequirement(name = "ccms")
+@Tag(name = "Owners", description = "Create, read, update and delete owners")
 @RestController
 @RequestMapping("api/v1/owners")
 public class OwnersController {
@@ -30,6 +34,7 @@ public class OwnersController {
         this.mapper = mapper;
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Get owners", description = "Get All Owners")
     @ApiResponses( value = {
             @ApiResponse(responseCode = "200", description = "Owner found",
@@ -41,6 +46,7 @@ public class OwnersController {
         return mapper.modelListPage(ownerService.getAll(), pageable);
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Get Owner By Id", description = "Get Owner by Id")
     @ApiResponses( value = {
             @ApiResponse(responseCode = "200", description = "Owner returned",
@@ -53,6 +59,7 @@ public class OwnersController {
         return mapper.toResource(ownerService.getById(ownerId));
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Create Owner", description = "Create Owner")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Owner created",
@@ -65,6 +72,7 @@ public class OwnersController {
         return mapper.toResource(ownerService.create(mapper.toModel(request)));
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Update Owner", description = "Update Owner")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Owner updated",
@@ -77,6 +85,7 @@ public class OwnersController {
         return  mapper.toResource(ownerService.update(ownerId, mapper.toModel(request)));
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Delete Owner", description = "Delete Owner")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Owner deleted", content = @Content(mediaType = "application/json"))

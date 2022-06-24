@@ -9,15 +9,18 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Tag(name = "Studios")
+@SecurityRequirement(name = "ccms")
+@Tag(name = "Studios", description = "Create, read, update and delete studios")
 @RestController
 @RequestMapping("api/v1/studios")
 public class StudiosController {
@@ -31,6 +34,7 @@ public class StudiosController {
         this.mapper = mapper;
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Get studios", description = "Get All Studios.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Studios found",
@@ -42,6 +46,7 @@ public class StudiosController {
         return mapper.modelListPage(studioService.getAll(), pageable);
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Get Studio By Id", description = "Get Studio by Id.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Studio returned",
@@ -54,6 +59,7 @@ public class StudiosController {
         return mapper.toResource(studioService.getById(studioId));
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Create Studio", description = "Create Studio")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Studio created",
@@ -67,6 +73,7 @@ public class StudiosController {
     }
 
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Update Studio", description = "Update Studio")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Studio updated",
@@ -79,6 +86,7 @@ public class StudiosController {
         return mapper.toResource(studioService.update(studioId, mapper.toModel(request)));
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Delete Studio", description = "Delete Studio")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Studio deleted", content = @Content(mediaType = "application/json"))

@@ -9,15 +9,18 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Tag(name = "Musicians")
+@SecurityRequirement(name = "ccms")
+@Tag(name = "Musicians", description = "Create, read, update and delete musicians")
 @RestController
 @RequestMapping("api/v1/musicians")
 public class MusiciansController {
@@ -29,6 +32,7 @@ public class MusiciansController {
         this.mapper=mapper;
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Get musicians", description = "Get All Musicians")
     @ApiResponses( value = {
             @ApiResponse(responseCode = "200", description = "Musician found",
@@ -40,6 +44,7 @@ public class MusiciansController {
         return mapper.modelListPage(musicianService.getAll(), pageable);
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Get Musician By Id", description = "Get Musician by Id.")
     @ApiResponses( value = {
             @ApiResponse(responseCode = "200", description = "Musician returned",
@@ -53,6 +58,7 @@ public class MusiciansController {
         return mapper.toResource(musicianService.getById(musicianId));
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Create Musician", description = "Create Musician")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Musician created",
@@ -66,6 +72,7 @@ public class MusiciansController {
         return mapper.toResource(musicianService.create(mapper.toModel(request)));
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Update Musician", description = "Update Musician")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Musician updated",
@@ -78,6 +85,7 @@ public class MusiciansController {
         return mapper.toResource(musicianService.update(musicianId, mapper.toModel(request)));
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     @Operation(summary = "Delete Musician", description = "Delete Musician")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Musician deleted", content = @Content(mediaType = "application/json"))
