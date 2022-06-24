@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Configuration;
 public class OpenApiConfiguration {
     @Bean
     public OpenAPI customOpenApi(
-            @Value("@project.description@") String applicationDescription,
-            @Value("@project.version@") String applicationVersion){
+            @Value("${documentation.application.description}") String applicationDescription,
+            @Value("${documentation.application.version}") String applicationVersion){
         return new OpenAPI()
                 .info(new Info()
                         .title("OPENGROUP CCMS API")
