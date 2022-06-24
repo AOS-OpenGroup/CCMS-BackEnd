@@ -16,7 +16,7 @@ import java.util.List;
 public class StudioMapper implements Serializable {
 
     @Autowired
-    private EnhancedModelMapper mapper;
+    EnhancedModelMapper mapper;
     // Object Mapping
     public StudioResource toResource(Studio model) {
         return mapper.map(model, StudioResource.class);
