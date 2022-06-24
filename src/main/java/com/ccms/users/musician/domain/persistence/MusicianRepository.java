@@ -1,6 +1,6 @@
-package com.ccms.user.domain.persistence;
+package com.ccms.users.musician.domain.persistence;
 
-import com.ccms.user.domain.model.entity.Musician;
+import com.ccms.users.musician.domain.model.entity.Musician;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

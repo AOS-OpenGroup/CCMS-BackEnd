@@ -1,4 +1,4 @@
-package com.ccms.user.domain.model.entity;
+package com.ccms.users.musician.domain.model.entity;
 
 import com.ccms.shared.domain.model.AuditModel;
 import lombok.*;

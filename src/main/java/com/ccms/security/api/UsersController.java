@@ -42,7 +42,7 @@ public class UsersController {
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> getAllUsers(Pageable pageable){
         Page<UserResource> resources=mapper.modelListToPage(userService.getAll(), pageable);
         return ResponseEntity.ok(resources);

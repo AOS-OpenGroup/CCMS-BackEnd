@@ -31,7 +31,7 @@ public class RolesController {
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('OWNER') or hasRole('MUSICIAN')")
+    @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     public ResponseEntity<?> getAllRoles(Pageable pageable){
         Page<RoleResource> resources=mapper.modelListToPage(roleService.getAll(), pageable);
         return ResponseEntity.ok(resources);

@@ -1,9 +1,9 @@
-package com.ccms.user.api;
-import com.ccms.user.domain.service.MusicianService;
-import com.ccms.user.mapping.MusicianMapper;
-import com.ccms.user.resource.CreateMusicianResource;
-import com.ccms.user.resource.MusicianResource;
-import com.ccms.user.resource.UpdateMusicianResource;
+package com.ccms.users.musician.api;
+import com.ccms.users.musician.domain.service.MusicianService;
+import com.ccms.users.musician.mapping.MusicianMapper;
+import com.ccms.users.musician.resource.CreateMusicianResource;
+import com.ccms.users.musician.resource.MusicianResource;
+import com.ccms.users.musician.resource.UpdateMusicianResource;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

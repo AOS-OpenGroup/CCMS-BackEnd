@@ -1,4 +1,4 @@
-package com.ccms.user.resource;
+package com.ccms.users.musician.resource;
 
 import lombok.*;
 

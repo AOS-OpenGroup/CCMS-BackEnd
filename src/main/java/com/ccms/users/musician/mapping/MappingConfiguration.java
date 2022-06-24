@@ -1,4 +1,4 @@
-package com.ccms.user.mapping;
+package com.ccms.users.musician.mapping;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
