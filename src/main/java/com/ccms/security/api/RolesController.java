@@ -3,6 +3,7 @@ package com.ccms.security.api;
 import com.ccms.security.domain.service.RoleService;
 import com.ccms.security.mapping.RoleMapper;
 import com.ccms.security.resource.RoleResource;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.data.domain.Pageable;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SecurityRequirement(name = "ccms")
-@Tag(name = "Roles", description = "Create, read, update and delete roles")
+@Tag(name = "Roles", description = "Read roles")
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/v1/roles")
@@ -30,6 +31,7 @@ public class RolesController {
         this.mapper=mapper;
     }
 
+    @Operation(summary = "Get roles", description = "Get All Roles.")
     @GetMapping
     @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     public ResponseEntity<?> getAllRoles(Pageable pageable){

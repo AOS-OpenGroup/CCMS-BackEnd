@@ -1,5 +1,6 @@
 package com.ccms.studio.resource;
 
+import com.ccms.users.owner.resource.OwnerResource;
 import lombok.*;
 
 @Getter
@@ -13,4 +14,5 @@ public class StudioResource {
     private String address;
     private String email;
     private String description;
+    //private OwnerResource owner;
 }

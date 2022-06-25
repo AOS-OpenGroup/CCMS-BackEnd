@@ -5,6 +5,7 @@ import com.ccms.security.domain.service.communication.AuthenticateRequest;
 import com.ccms.security.domain.service.communication.RegisterRequest;
 import com.ccms.security.mapping.UserMapper;
 import com.ccms.security.resource.UserResource;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
@@ -41,6 +42,7 @@ public class UsersController {
         return userService.register(request);
     }
 
+    @Operation(summary = "Get users", description = "Get All Users.")
     @GetMapping
     @PreAuthorize("hasRole('USER') or hasRole('OWNER') or hasRole('MUSICIAN')")
     public ResponseEntity<?> getAllUsers(Pageable pageable){

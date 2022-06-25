@@ -1,6 +1,7 @@
 package com.ccms.users.owner.domain.model.entity;
 
 import com.ccms.shared.domain.model.AuditModel;
+import com.ccms.studio.domain.model.entity.Studio;
 import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -31,4 +32,8 @@ public class Owner extends AuditModel {
     private String email;
 
     private long phoneNumber;
+
+    /*@OneToOne(mappedBy = "owner", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Studio studio;*/
 }
