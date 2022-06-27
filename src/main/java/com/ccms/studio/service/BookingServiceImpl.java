@@ -3,6 +3,7 @@ package com.ccms.studio.service;
 import com.ccms.shared.exception.ResourceNotFoundException;
 import com.ccms.shared.exception.ResourceValidationException;
 import com.ccms.studio.domain.model.entity.Booking;
+import com.ccms.studio.domain.model.entity.Studio;
 import com.ccms.studio.domain.persistence.BookingRepository;
 import com.ccms.studio.domain.service.BookingService;
 import org.springframework.data.domain.Page;
@@ -48,7 +49,6 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Booking create(Booking booking) {
 
-        /*
         //Set<ConstraintViolation<Booking>> violations = validator.validate(booking);
         if (!violations.isEmpty())
             throw new ResourceValidationException(ENTITY, violations);
@@ -59,17 +59,29 @@ public class BookingServiceImpl implements BookingService {
             throw new ResourceValidationException(ENTITY,
                     "A book with the same date already exists.");
 
-        return bookingRepository.save(booking);*/
-        return null;
+        return bookingRepository.save(booking);
+
     }
 
     @Override
-    public Booking update(Long studentId, Booking request) {
-        return null;
+    public Booking update(Long bookingId, Booking request) {
+
+        Set<ConstraintViolation<Booking>> violations = validator.validate(request);
+
+        if (!violations.isEmpty())
+            throw new ResourceValidationException(ENTITY, violations);
+
+        return bookingRepository.findById(bookingId).map(booking ->
+                        bookingRepository.save(booking.withDate(request.getDate()))
+                .orElseThrow(() -> new ResourceNotFoundException(ENTITY, bookingId)));
+    }
     }
 
     @Override
     public ResponseEntity<?> delete(Long bookingId) {
-        return null;
+        return bookingRepository.findById(bookingId).map(booking -> {
+            bookingRepository.delete(booking);
+            return ResponseEntity.ok().build();
+        }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, bookingId));
     }
 }
