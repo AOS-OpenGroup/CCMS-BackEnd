@@ -47,4 +47,11 @@ public class UsersController {
         Page<UserResource> resources=mapper.modelListToPage(userService.getAll(), pageable);
         return ResponseEntity.ok(resources);
     }
+
+    @GetMapping("{userId}")
+    public UserResource getUserById(@PathVariable Long userId){
+        return mapper.toResource(userService.getById(userId));
+    }
+
+
 }

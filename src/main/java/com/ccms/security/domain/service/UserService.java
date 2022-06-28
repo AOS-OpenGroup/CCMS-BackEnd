@@ -12,4 +12,6 @@ public interface UserService extends UserDetailsService {
     ResponseEntity<?> authenticate(AuthenticateRequest request);
     ResponseEntity<?> register(RegisterRequest request);
     List<User> getAll();
+
+    User getById(Long id);
 }
